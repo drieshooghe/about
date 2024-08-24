@@ -10,7 +10,6 @@ interface ImageConfig {
   sizes: number[];         // Array of sizes to generate
   densities: number[];     // Array of pixel densities to generate (e.g., [1, 2] for 1x, 2x)
   formats: OutputFormat[]; // Array of output formats (e.g., ['jpeg', 'webp'])
-  placeholder: boolean;    // Generate a blurred placeholder image
 }
 
 type OutputFormat = 'jpeg' | 'png' | 'webp' | 'avif';
@@ -49,22 +48,8 @@ async function generateImages(configs: ImageConfig[], outputPath: string) {
 
   // Then generate new images
   for (const config of configs) {
-    const { inputPath, sizes, densities, formats, placeholder } = config;
+    const { inputPath, sizes, densities, formats } = config;
     const absoluteInputPath = path.resolve(__dirname, 'src/assets', inputPath);
-
-    if(placeholder) {
-      for (const format of formats) {
-        const image = sharp(absoluteInputPath)
-        .resize(20)  // Resize the image based on size and density
-        .toFormat(format);
-
-        const outputFileName = `${path.basename(inputPath, path.extname(inputPath))}-@1x.${format}`;
-        const outputFilePath = path.join(outputPath, outputFileName);
-
-        await image.toFile(outputFilePath);
-        console.log(`Generated ${outputFilePath}`);
-      }
-    }
 
     for (const size of sizes) {
       for (const density of densities) {
@@ -92,7 +77,6 @@ const imageConfigs: ImageConfig[] = [
 	  sizes: [162, 224],    // Generate 162px and 224px width images
 	  densities: [1, 2],    // Generate @1x and @2x images
 	  formats: ['webp', 'avif', 'png'], // Output as JPEG and WebP
-    placeholder: true,
 	}
   ];
 

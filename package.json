@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "next dev --turbo",
 		"build": "next build",
-		"image:generate": "tsx ./utils/generate-images.ts",
+		"image:generate": "./generate-images.ts",
 		"start": "next start",
 		"lint": "biome lint --write",
 		"format": "biome format --write"
