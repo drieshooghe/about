@@ -19,8 +19,11 @@ body {
     background: rgb(var(--background-rgb))
 }
 
-/* @layer utilities {
-    .text-balance {
-        text-wrap: balance;
+@layer utilities {
+    .image-border-white {
+        filter: drop-shadow(5px 0 0 white)
+        drop-shadow(0 5px 0 white)
+        drop-shadow(-5px 0 0 white)
+        drop-shadow(0 -5px 0 white);
     }
-} */
+}
