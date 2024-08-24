@@ -4,7 +4,8 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev --turbo",
-		"build": "next build && next-export-optimize-images",
+		"build": "next build",
+		"image:generate": "tsx ./utils/generate-images.ts",
 		"start": "next start",
 		"lint": "biome lint --write",
 		"format": "biome format --write"
@@ -19,9 +20,10 @@
 		"@types/node": "^20",
 		"@types/react": "^18",
 		"@types/react-dom": "^18",
-		"next-export-optimize-images": "^4.5.0",
 		"postcss": "^8",
+		"sharp": "^0.33.5",
 		"tailwindcss": "^3.4.1",
+		"tsx": "^4.17.0",
 		"typescript": "^5"
 	}
 }
