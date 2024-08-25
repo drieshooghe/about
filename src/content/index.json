@@ -1,0 +1,118 @@
+{
+	"heading": {
+		"pre": "Hi, I'm",
+		"title": "Dries Hooghe"
+	},
+	"info": {
+		"location": "Waregem, BE"
+	},
+	"introduction": "A full-stack TypeScript developer with a strong focus on cloud engineering and hands-on experience with NodeJS and AWS.",
+	"expertise": {
+		"title": "Expertise",
+		"items": [
+			"Backend Development",
+			"Amazon Web Services",
+			"Continuous Integration & Deployment"
+		]
+	},
+	"experience": {
+		"title": {
+			"short": "Highlighted Experience",
+			"full": "Full Experience"
+		},
+		"items": [
+			{
+				"company": "Cheqroom",
+				"role": "Senior software engineer",
+				"period": "Jan '23 - present",
+				"location": "Ghent, BE",
+				"description": "In addition to contributing to the continuous enhancement of Cheqroom's services, I took the lead in managing the cloud environment with a focus on architecture, security, cost optimization, and deployment strategies, ensuring high performance and scalability."
+			},
+			{
+				"company": "Cheqroom",
+				"role": "Software engineer",
+				"period": "Feb '19 - Jan '23",
+				"location": "Ghent, BE",
+				"description": "Developed a new backend solution leveraging Event Sourcing and Domain-Driven Design within a microservice architecture using NestJS and GraphQL federation. Transitioned the cloud infrastructure to Infrastructure as Code (IaC) and aligned it with AWS' Well-Architected Framework, improving reliability and efficiency."
+			},
+			{
+				"company": "Meditech",
+				"role": "Backend web developer",
+				"period": "Jul '18 - Feb '19",
+				"location": "Izegem, BE",
+				"description": "Maintained and enhanced the CMS platform supporting the MT.Vision, a Digital Signage solution.\nContributed to the development of the communication layer for the MT.Matic, a digital wall dispenser for pharmaceuticals."
+			},
+			{
+				"company": "DAS Media",
+				"role": "Full-stack web developer",
+				"period": "Oct '17 - Jun '18",
+				"location": "Waregem, BE",
+				"description": "Was hired after my internship to contribute to both backend and frontend projects, transitioning from Laravel to CraftCMS."
+			},
+			{
+				"company": "DAS Media",
+				"role": "Web development internship",
+				"period": "Aug '17 - Oct '18",
+				"location": "Waregem, BE",
+				"description": "Built various customer websites using Laravel (PHP) during my internship at DAS Media."
+			}
+		]
+	},
+	"skills": {
+		"title": "Skills",
+		"items": [
+			"Node.js & Typescript",
+			"GraphQL",
+			"Docker",
+			"Amazon Web Services",
+			"Github Actions & CircleCI",
+			"SQL & NoSQL",
+			"Sentry",
+			"Python"
+		]
+	},
+	"interests": {
+		"title": "Interests",
+		"items": [
+			"Road cyling",
+			"Badminton & Padel",
+			"Fantasy books",
+			"Rust"
+		]
+	},
+	"education": {
+		"title": "Education & Certifications",
+		"items": [
+			{
+				"title": "Certified Cloud Practitioner",
+				"type": "Exam",
+				"organization": "AWS",
+				"date": "Mar '24"
+			},
+			{
+				"title": "Architecting on AWS",
+				"type": "Course",
+				"organization": "AWS",
+				"date": "Dec '23"
+			},
+			{
+				"title": "AWS Technical Essentials",
+				"type": "Course",
+				"organization": "AWS",
+				"date": "Dec '23"
+			},
+			{
+				"title": "AWS Cloud Practitioner Essentials",
+				"type": "Course",
+				"organization": "AWS",
+				"date": "Nov '23"
+			},
+			{
+				"title": "Bachelor of Social Work",
+				"type": "Studies",
+				"organization": "Artevelde Hogeschool Ghent",
+				"date": "Jun '14"
+			}
+		]
+	}
+}

@@ -1,0 +1,21 @@
+{
+	"meta": {
+		"title": "Software Engineer & Full-stack Developer - Dries Hooghe",
+		"description": "Welcome to Dries Hooghe's portfolio site, where you can explore my work as a software engineer and full-stack developer. Feel free to reach out to discuss your projects.",
+		"keywords": "Dries Hooghe, web developer, web development, design, technology, Belgium",
+		"authors": [
+			{
+				"name": "Dries Hooghe",
+				"url": "https://www.drieshooghe.com"
+			}
+		],
+		"openGraph": {
+			"title": "Portfolio Dries Hooghe",
+			"description": "Explore the portfolio of Dries Hooghe, a software engineer and full-stack developer.",
+			"image": "https://www.drieshooghe.com/dries.jpg",
+			"url": "https://www.drieshooghe.com",
+			"type": "website",
+			"siteName": "Portfolio Dries Hooghe"
+		}
+	}
+}
