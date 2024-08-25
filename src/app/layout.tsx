@@ -14,7 +14,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${font.variable} font-sans mx-4`}>{children}</body>
+			<body className={`${font.variable} font-sans mx-4 md:max-w-3xl lg:max-w-5xl md:mx-auto print:max-w-2xl`}>
+				{children}
+			</body>
 		</html>
 	);
 }

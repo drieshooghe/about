@@ -78,7 +78,7 @@ export default function Home() {
 				<div className="grid grid-cols-7 mb-4 sm:grid-cols-2 gap-x-2 sm:gap-x-4 gap-y-6 sm:gap-y-8">
 					{/** Expertise */}
 					<div className="order-1 col-span-5 sm:order-2 sm:col-span-1 sm:col-start-auto md:w-full">
-						<div className="px-6 py-4 -ml-4 text-white bg-green-400 sm:-mr-4 sm:-ml-0 sm:rounded-l-xl sm:rounded-r-none sm:text-right rounded-r-xl">
+						<div className="px-6 py-4 -ml-4 text-white bg-green-400 sm:-mr-4 sm:-ml-0 sm:rounded-l-xl sm:rounded-r-none sm:text-right rounded-r-xl md:rounded-xl md:mr-0">
 							<h3 className="mb-2 font-medium uppercase">{expertise.title}</h3>
 							<ul className="font-extralight">
 								{expertise.items.map((item) => (
@@ -107,8 +107,8 @@ export default function Home() {
 						</ol>
 					</div>
 					{/** Skills */}
-					<div className="order-3 col-span-5 col-start-3 md:order-2 sm:col-span-1 sm:col-start-auto md:w-full md:break-inside-avoid-column">
-						<div className="px-6 py-4 -mr-4 text-right text-white bg-green-400 rounded-l-xl sm:text-left sm:-ml-4 sm:-mr-0 sm:rounded-l-none sm:rounded-r-xl">
+					<div className="order-3 col-span-5 col-start-3 md:order-2 sm:col-span-1 sm:col-start-auto">
+						<div className="px-6 py-4 -mr-4 text-right text-white bg-green-400 rounded-l-xl sm:text-left sm:-ml-4 sm:-mr-0 sm:rounded-l-none sm:rounded-r-xl md:rounded-xl md:ml-0">
 							<h3 className="mb-2 font-medium uppercase">{skills.title}</h3>
 							<ul className="font-extralight">
 								{skills.items.map((item) => (
@@ -133,7 +133,7 @@ export default function Home() {
 					</div>
 					{/** Interests */}
 					<div className="order-5 col-span-5 md:w-full sm:col-span-1 sm:col-start-2">
-						<div className="px-6 py-4 -ml-4 text-white bg-green-400 rounded-r-xl sm:-ml-0 sm:-mr-4 sm:rounded-r-none sm:rounded-l-xl">
+						<div className="px-6 py-4 -ml-4 text-white bg-green-400 rounded-r-xl sm:-ml-0 sm:-mr-4 sm:rounded-r-none sm:rounded-l-xl md:rounded-xl md:mr-0">
 							<h3 className="font-medium uppercase">{interests.title}</h3>
 							<ul className="font-extralight">
 								{interests.items.map((item) => (
