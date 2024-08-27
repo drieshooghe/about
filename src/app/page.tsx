@@ -92,13 +92,11 @@ export default function Home() {
 						<h3 className="mb-2 font-medium text-green-600 uppercase">{experience.title.short}</h3>
 						<ol className="timeline">
 							{experience.items.map((item) => (
-								<li key={item.company}>
-									<div className="flex items-center justify-center text-green-400 bg-white rounded-full timeline-icon ring-2 ring-inset ring-green-400 w-7 h-7">
-										{getCompanyIcon(item.company)}
-									</div>
+								<li key={item.company} className="timeline-item">
+									<div className="timeline-icon text-green-400 ring-green-400">{getCompanyIcon(item.company)}</div>
 									<div className="timeline-description">
-										<p className="leading-7 text-green-500">{item.role}</p>
-										<p className="text-sm font-light text-green-200">
+										<p className="timeline-description-title text-green-500">{item.role}</p>
+										<p className="timeline-description-info text-green-200">
 											@ {item.company} | <span className="text-nowrap">{item.period}</span>
 										</p>
 									</div>
@@ -147,16 +145,18 @@ export default function Home() {
 						<h3 className="mb-2 font-medium text-green-600 uppercase sm:text-center">{experience.title.full}</h3>
 						<ol className="timeline timeline--full">
 							{experience.items.map((item) => (
-								<li key={item.company} className="group">
-									<div className="flex items-center justify-center text-green-400 bg-white rounded-full timeline-icon grow ring-2 ring-inset ring-green-400 content min-w-7 h-7 transition-colors group-hover:text-white group-hover:bg-green-400 ease-in-out">
+								<li key={item.company} className="group timeline-item">
+									<div className=" text-green-400 timeline-icon  ring-green-400 group-hover:text-white group-hover:bg-green-400">
 										{getCompanyIcon(item.company)}
 									</div>
 									<div className="timeline-description">
-										<p className="leading-7 text-green-500">{item.role}</p>
-										<p className="text-sm font-light text-green-200">
+										<p className="timeline-description-title text-green-500 group-hover:bg-green-400 group-hover:text-white">
+											{item.role}
+										</p>
+										<p className="timeline-description-info text-green-200">
 											@ {item.company} | {item.period}
 										</p>
-										<p className="text-sm font-light text-green-500">{item.description}</p>
+										<p className="timeline-description-content text-green-500">{item.description}</p>
 									</div>
 								</li>
 							))}
