@@ -1,52 +1,11 @@
 import indexContent from '@content/index.json';
 
 import { At, Cheqroom, DASMedia, LinkedIn, Location, Meditech } from '@assets/icons';
+import Avatar from '@components/avatar';
+import Paragraph from '@components/paragraph';
+import SectionTitle from '@components/section-title';
 import React, { ImgHTMLAttributes } from 'react';
 import { GitHub } from '../assets/icons/github';
-
-const ResponsiveAvatar = () => {
-	return (
-		<picture>
-			{/* AVIF source for screens larger than 1024px */}
-			<source
-				type="image/avif"
-				media="(min-width: 1024px)"
-				srcSet="/image/avatar-224@1x.avif 1x, /image/avatar-224@2x.avif 2x"
-			/>
-			{/* WebP source for screens larger than 1024px */}
-			<source
-				type="image/webp"
-				media="(min-width: 1024px)"
-				srcSet="/image/avatar-224@1x.webp 1x, /image/avatar-224@2x.webp 2x"
-			/>
-			{/* Fallback to PNG for screens larger than 1024px */}
-			<source media="(min-width: 1024px)" srcSet="/image/avatar-224@1x.png 1x, /image/avatar-224@2x.png 2x" />
-
-			{/* AVIF source for screens smaller than 1024px */}
-			<source
-				type="image/avif"
-				media="(max-width: 1023px)"
-				srcSet="/image/avatar-162@1x.avif 1x, /image/avatar-162@2x.avif 2x"
-			/>
-			{/* WebP source for screens smaller than 1024px */}
-			<source
-				type="image/webp"
-				media="(max-width: 1023px)"
-				srcSet="/image/avatar-162@1x.webp 1x, /image/avatar-162@2x.webp 2x"
-			/>
-			{/* Fallback to PNG for screens smaller than 1024px */}
-			<source media="(max-width: 1023px)" srcSet="/image/avatar-162@1x.png 1x, /image/avatar-162@2x.png 2x" />
-
-			{/* Fallback img element for browsers that do not support <picture> */}
-			<img
-				src="/image/avatar-224@1x.png"
-				srcSet="/image/avatar-224@2x.png 2x"
-				alt="Avatar"
-				className="w-40 p-2 mb-2 lg:w-56 image-border-white"
-			/>
-		</picture>
-	);
-};
 
 const getCompanyIcon = (name: string) => {
 	switch (name) {
@@ -60,54 +19,56 @@ const getCompanyIcon = (name: string) => {
 };
 
 export default function Home() {
-	const { info, introduction, heading, expertise, skills, interests, experience, education } = indexContent;
+	const { info, introduction, heading, expertise, skills, interests, experience, education, cta } = indexContent;
 	return (
 		<>
 			<header className="flex flex-col items-center col-span-4 mt-10 text-green-600">
-				<ResponsiveAvatar />
+				<Avatar />
 				<p className="pb-1 text-xl">{heading.pre}</p>
 				<h1 className="mb-3 text-4xl font-medium">{heading.title}</h1>
 				<p className="flex items-center gap-0.5">
 					<Location className="w-4 h-4" /> <span className="text-sm font-light">{info.location}</span>
 				</p>
 			</header>
-			<section className="grid grid-cols-4 py-4 mt-4 mb-8 border-y md:grid-cols-8">
+			<section className="grid grid-cols-1 py-4 my-4 border-y md:grid-cols-8">
 				<p className="col-span-4 font-light text-center text-green-600 md:col-start-2 md:col-span-6">{introduction}</p>
 			</section>
 			<main>
-				<div className="grid grid-cols-7 mb-4 sm:grid-cols-2 gap-x-2 sm:gap-x-4 gap-y-6 sm:gap-y-8">
+				<div className="grid grid-cols-1 sm:grid-cols-2 gap-x-2 sm:gap-x-4 gap-y-6 sm:gap-y-8">
 					{/** Expertise */}
-					<div className="order-1 col-span-5 sm:order-2 sm:col-span-1 sm:col-start-auto md:w-full sm:self-center sm:justify-self-end">
-						<div className="px-6 py-4 -ml-4 text-white bg-green-400 w-fit sm:-mr-4 sm:-ml-0 sm:rounded-l-xl sm:rounded-r-none sm:text-right rounded-r-xl md:rounded-xl md:mr-0 print:text-green-600">
-							<h3 className="mb-2 font-medium uppercase">{expertise.title}</h3>
+					<div className="order-1 sm:order-2 md:w-full sm:self-center sm:justify-self-end">
+						<div className="px-6 py-4 w-fit sm:-mr-4 sm:-ml-0 sm:rounded-l-xl sm:rounded-r-none sm:text-right rounded-r-xl md:rounded-xl md:mr-0 print:text-green-600">
+							<SectionTitle>{expertise.title}</SectionTitle>
 							<ul className="font-extralight">
 								{expertise.items.map((item) => (
-									<li key={item}>{item}</li>
+									<li key={item}>
+										<Paragraph>{item}</Paragraph>
+									</li>
 								))}
 							</ul>
 						</div>
 					</div>
 					{/** Highlighted experience */}
-					<div className="order-2 col-span-5 col-start-2 justify-self-center sm:order-1 sm:col-span-1 sm:col-start-auto w-fit">
-						<h3 className="mb-2 font-medium text-green-600 uppercase">{experience.title.short}</h3>
+					<div className="order-2 justify-self-center sm:order-1 sm:col-span-1 sm:col-start-auto w-fit">
+						<SectionTitle>{experience.title.short}</SectionTitle>
 						<ol className="timeline">
 							{experience.items.map((item) => (
 								<li key={item.company} className="timeline-item">
 									<div className="timeline-icon text-green-400 ring-green-400">{getCompanyIcon(item.company)}</div>
 									<div className="timeline-description">
-										<p className="timeline-description-title text-green-500">{item.role}</p>
-										<p className="timeline-description-info text-green-200">
+										<Paragraph size="large">{item.role}</Paragraph>
+										<Paragraph variant="subdued" weight="light" size="small">
 											@ {item.company} | <span className="text-nowrap">{item.period}</span>
-										</p>
+										</Paragraph>
 									</div>
 								</li>
 							))}
 						</ol>
 					</div>
 					{/** Skills */}
-					<div className="order-3 col-span-5 col-start-3 md:order-2 sm:col-span-1 sm:col-start-auto sm:self-center justify-self-end sm:justify-self-start">
+					<div className="order-3 md:order-2 sm:col-span-1 sm:col-start-auto sm:self-center justify-self-end sm:justify-self-start">
 						<div className="px-6 py-4 -mr-4 text-right text-white bg-green-400 w-fit rounded-l-xl sm:text-left sm:-ml-4 sm:-mr-0 sm:rounded-l-none sm:rounded-r-xl md:rounded-xl md:ml-0 print:text-green-600">
-							<h3 className="mb-2 font-medium uppercase">{skills.title}</h3>
+							<SectionTitle>{skills.title}</SectionTitle>
 							<ul className="font-extralight">
 								{skills.items.map((item) => (
 									<li key={item}>{item}</li>
@@ -116,23 +77,23 @@ export default function Home() {
 						</div>
 					</div>
 					{/** Education & Certifications */}
-					<div className="order-4 col-span-5 col-start-2 md:w-full sm:col-span-1 sm:col-start-auto w-fit justify-self-center">
-						<h3 className="mb-2 font-medium text-green-600 uppercase">{education.title}</h3>
+					<div className="order-4 md:w-full sm:col-span-1 sm:col-start-auto w-fit justify-self-center">
+						<SectionTitle>{education.title}</SectionTitle>
 						<ul className="list-disc ml-7 marker:text-green-500">
 							{education.items.map((item) => (
 								<li key={item.title} className="mb-2">
-									<p className="text-green-500">{item.title}</p>
-									<p className="text-sm font-light text-green-200">
+									<Paragraph size="large">{item.title}</Paragraph>
+									<Paragraph size="small" weight="light" variant="subdued">
 										{item.type} @ {item.organization} | <span className="text-nowrap">{item.date}</span>
-									</p>
+									</Paragraph>
 								</li>
 							))}
 						</ul>
 					</div>
 					{/** Interests */}
-					<div className="order-5 col-span-5 md:w-full sm:col-span-1 sm:col-start-2 sm:self-center sm:justify-self-end">
+					<div className="order-5 md:w-full sm:col-span-1 sm:col-start-2 sm:self-center sm:justify-self-end">
 						<div className="px-6 py-4 -ml-4 text-white bg-green-400 w-fit rounded-r-xl sm:-ml-0 sm:-mr-4 sm:rounded-r-none sm:rounded-l-xl md:rounded-xl md:mr-0 print:text-green-600">
-							<h3 className="font-medium uppercase">{interests.title}</h3>
+							<SectionTitle>{interests.title}</SectionTitle>
 							<ul className="font-extralight">
 								{interests.items.map((item) => (
 									<li key={item}>{item}</li>
@@ -141,8 +102,8 @@ export default function Home() {
 						</div>
 					</div>
 					{/** Full experience */}
-					<div className="order-6 col-span-5 col-start-2 sm:col-span-2 sm:col-start-auto">
-						<h3 className="mb-2 font-medium text-green-600 uppercase sm:text-center">{experience.title.full}</h3>
+					<div className="order-6 sm:col-span-2 sm:col-start-auto">
+						<SectionTitle>{experience.title.full}</SectionTitle>
 						<ol className="timeline timeline--full">
 							{experience.items.map((item) => (
 								<li key={item.company} className="group timeline-item">
@@ -150,24 +111,29 @@ export default function Home() {
 										{getCompanyIcon(item.company)}
 									</div>
 									<div className="timeline-description">
-										<p className="timeline-description-title text-green-500 group-hover:bg-green-400 group-hover:text-white">
+										<Paragraph size="large" className="group-hover:bg-green-400 group-hover:text-white py-0.5">
 											{item.role}
-										</p>
-										<p className="timeline-description-info text-green-200">
+										</Paragraph>
+										<Paragraph variant="subdued" weight="light" size="small" className="mb-1.5">
 											@ {item.company} | {item.period}
-										</p>
-										<p className="timeline-description-content text-green-500">{item.description}</p>
+										</Paragraph>
+										<Paragraph weight="light" size="medium" className="timeline-description-content">
+											{item.description}
+										</Paragraph>
 									</div>
 								</li>
 							))}
 						</ol>
 					</div>
 				</div>
-				<div className="grid grid-cols-7 mt-12 ">
-					<div className="col-span-5 col-start-2 p-4 text-white bg-green-400 rounded-t-xl">
-						<h3>Let's talk!</h3>
+				<div className="grid grid-cols-1 mt-12 ">
+					<div className="p-4 text-white bg-green-400 rounded-t-xl">
+						<SectionTitle>{cta.title}</SectionTitle>
 					</div>
 				</div>
+
+				{/** Project section: event-sourcing, this website and CI/CD, etc. */}
+				{/** Made with NextJS, Tailwind, blablabla */}
 			</main>
 		</>
 	);
