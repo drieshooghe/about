@@ -18,7 +18,7 @@
 }
 
 .full {
-	@media (min-width: 640px) {
+	@media (min-width: 768px) {
 		gap: 0;
 
 		&::before {
@@ -39,14 +39,9 @@
 				color: white;
 			}
 
-			.icon {
-				&.group:hover {
-					background-color: red;
-				}
-			}
-
 			.title {
 				line-height: 28px;
+				margin-bottom: 0.25rem;
 			}
 
 			&:nth-child(odd) {

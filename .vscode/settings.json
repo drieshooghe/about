@@ -29,6 +29,9 @@
 	"[jsonc]": {
 		"editor.defaultFormatter": "vscode.json-language-features"
 	},
+	"[css]": {
+		"editor.defaultFormatter": "vscode.css-language-features"
+	},
 	"typescript.tsserver.log": "off",
 	"typescript.format.enable": false
 }
