@@ -21,7 +21,7 @@ export default function Home() {
 					<Location className="w-4 h-4" /> <span className="text-sm font-light">{info.location}</span>
 				</p>
 			</header>
-			<section className="grid grid-cols-1 py-4 my-4 border-y">
+			<section className="grid grid-cols-1 py-4 mt-4 mb-8 border-y">
 				<Paragraph weight="light" size="large" className="text-center">
 					{introduction}
 				</Paragraph>
