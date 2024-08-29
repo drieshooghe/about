@@ -1,5 +1,4 @@
 import { Cheqroom, DASMedia, Meditech } from '@assets/icons';
-import type { experience } from '@content/index.json';
 import type { FC } from 'react';
 
 interface Props {
