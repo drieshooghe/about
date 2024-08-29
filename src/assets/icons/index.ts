@@ -5,3 +5,4 @@ export { GitHub } from './github';
 export { LinkedIn } from './linkedin';
 export { Location } from './location';
 export { Meditech } from './meditech';
+export { Printer } from './printer';
