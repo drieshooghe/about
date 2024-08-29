@@ -2,21 +2,12 @@ import indexContent from '@content/index.json';
 
 import { At, Cheqroom, DASMedia, LinkedIn, Location, Meditech } from '@assets/icons';
 import Avatar from '@components/avatar';
+import CompanyLogo from '@components/company-logo';
 import Paragraph from '@components/paragraph';
 import SectionTitle from '@components/section-title';
+import Timeline from '@components/timeline/timeline';
 import React, { ImgHTMLAttributes } from 'react';
 import { GitHub } from '../assets/icons/github';
-
-const getCompanyIcon = (name: string) => {
-	switch (name) {
-		case 'Cheqroom':
-			return <Cheqroom className="w-3.5 h-3.5" />;
-		case 'DAS Media':
-			return <DASMedia className="w-3.5 h-3.5" />;
-		case 'Meditech':
-			return <Meditech className="w-3.5 h-3.5" />;
-	}
-};
 
 export default function Home() {
 	const { info, introduction, heading, expertise, skills, interests, experience, education, cta } = indexContent;
@@ -30,8 +21,10 @@ export default function Home() {
 					<Location className="w-4 h-4" /> <span className="text-sm font-light">{info.location}</span>
 				</p>
 			</header>
-			<section className="grid grid-cols-1 py-4 my-4 border-y md:grid-cols-8">
-				<p className="col-span-4 font-light text-center text-green-600 md:col-start-2 md:col-span-6">{introduction}</p>
+			<section className="grid grid-cols-1 py-4 my-4 border-y">
+				<Paragraph weight="light" size="large" className="text-center">
+					{introduction}
+				</Paragraph>
 			</section>
 			<main>
 				<div className="grid grid-cols-1 sm:grid-cols-2 gap-x-2 sm:gap-x-4 gap-y-6 sm:gap-y-8">
@@ -51,19 +44,7 @@ export default function Home() {
 					{/** Highlighted experience */}
 					<div className="order-2 justify-self-center sm:order-1 sm:col-span-1 sm:col-start-auto w-fit">
 						<SectionTitle>{experience.title.short}</SectionTitle>
-						<ol className="timeline">
-							{experience.items.map((item) => (
-								<li key={item.company} className="timeline-item">
-									<div className="timeline-icon text-green-400 ring-green-400">{getCompanyIcon(item.company)}</div>
-									<div className="timeline-description">
-										<Paragraph size="large">{item.role}</Paragraph>
-										<Paragraph variant="subdued" weight="light" size="small">
-											@ {item.company} | <span className="text-nowrap">{item.period}</span>
-										</Paragraph>
-									</div>
-								</li>
-							))}
-						</ol>
+						<Timeline experience={experience} />
 					</div>
 					{/** Skills */}
 					<div className="order-3 md:order-2 sm:col-span-1 sm:col-start-auto sm:self-center justify-self-end sm:justify-self-start">
@@ -104,26 +85,7 @@ export default function Home() {
 					{/** Full experience */}
 					<div className="order-6 sm:col-span-2 sm:col-start-auto">
 						<SectionTitle>{experience.title.full}</SectionTitle>
-						<ol className="timeline timeline--full">
-							{experience.items.map((item) => (
-								<li key={item.company} className="group timeline-item">
-									<div className=" text-green-400 timeline-icon  ring-green-400 group-hover:text-white group-hover:bg-green-400">
-										{getCompanyIcon(item.company)}
-									</div>
-									<div className="timeline-description">
-										<Paragraph size="large" className="group-hover:bg-green-400 group-hover:text-white py-0.5">
-											{item.role}
-										</Paragraph>
-										<Paragraph variant="subdued" weight="light" size="small" className="mb-1.5">
-											@ {item.company} | {item.period}
-										</Paragraph>
-										<Paragraph weight="light" size="medium" className="timeline-description-content">
-											{item.description}
-										</Paragraph>
-									</div>
-								</li>
-							))}
-						</ol>
+						<Timeline variation="full" experience={experience} />
 					</div>
 				</div>
 				<div className="grid grid-cols-1 mt-12 ">

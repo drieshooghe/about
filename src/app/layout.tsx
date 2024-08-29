@@ -15,7 +15,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body
-				className={`${font.variable} font-sans max-w-xs mx-auto md:max-w-3xl lg:max-w-5xl md:mx-auto print:max-w-2xl`}
+				className={`${font.variable} font-sans max-w-xs mx-auto sm:max-w-md md:max-w-2xl lg:max-w-5xl md:mx-auto print:max-w-2xl`}
 			>
 				{children}
 			</body>
