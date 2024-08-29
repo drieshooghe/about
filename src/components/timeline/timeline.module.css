@@ -18,7 +18,7 @@
 }
 
 .full {
-	@media (min-width: 768px) {
+	@media not print and (min-width: 768px) {
 		gap: 0;
 
 		&::before {

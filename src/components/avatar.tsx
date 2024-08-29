@@ -38,7 +38,7 @@ const Avatar: FC = () => {
 				src="/image/avatar-224@1x.png"
 				srcSet="/image/avatar-224@2x.png 2x"
 				alt="Avatar"
-				className="w-40 p-2 mb-2 lg:w-56 image-border-white"
+				className="w-40 p-2 mb-2 lg:w-56 image-border-white print:w-32"
 			/>
 		</picture>
 	);

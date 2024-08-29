@@ -1,15 +1,26 @@
-import indexContent from '@content/index.json';
+import {
+	cta,
+	education,
+	experience,
+	expertise,
+	heading,
+	info,
+	interests,
+	introduction,
+	projects,
+	skills,
+} from '@content/index.json';
 
-import { Location, Printer } from '@assets/icons';
+import { At, GitHub, LinkedIn, Location, Printer } from '@assets/icons';
 import Avatar from '@components/avatar';
-import CompanyLogo from '@components/company-logo';
+import ContactInfo from '@components/contact-info';
 import Paragraph from '@components/paragraph';
 import SectionTitle from '@components/section-title';
 import Timeline from '@components/timeline/timeline';
+import Link from 'next/link';
 import React from 'react';
 
 export default function Home() {
-	const { info, introduction, heading, expertise, skills, interests, experience, education, cta } = indexContent;
 	return (
 		<>
 			<header className="flex flex-col print:flex-row  items-center mt-10 text-green-600 print:gap-4 relative">
@@ -17,12 +28,15 @@ export default function Home() {
 					<Printer className="text-green-300 transition-colors w-8 h-8 hover:text-green-400" />
 				</button>
 				<Avatar />
-				<div className="flex flex-col items-center print:items-start">
-					<p className="pb-1 text-xl">{heading.pre}</p>
-					<h1 className="mb-3 text-4xl font-medium">{heading.title}</h1>
+				<div className="flex flex-col grow items-center print:items-start">
+					<p className="pb-1 text-xl print:text-lg">{heading.pre}</p>
+					<h1 className="mb-3 text-4xl print:text-3xl font-medium">{heading.title}</h1>
 					<p className="flex items-center gap-0.5">
 						<Location className="w-4 h-4" /> <span className="text-sm font-light">{info.location}</span>
 					</p>
+				</div>
+				<div className="hidden print:flex print:flex-col print:gap-2">
+					<ContactInfo info={info} />
 				</div>
 			</header>
 			<section className="grid grid-cols-1 py-4 mt-4 mb-8 border-y">
@@ -31,9 +45,9 @@ export default function Home() {
 				</Paragraph>
 			</section>
 			<main>
-				<div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+				<div className="grid grid-cols-1 sm:grid-cols-2 gap-8 print:gap-6">
 					{/** Expertise */}
-					<section className="order-1 sm:order-2 grid auto-rows-min gap-y-2 break-inside-avoid">
+					<section className="order-1 sm:order-2 grid auto-rows-min gap-y-2 break-inside-avoid print:order-3">
 						<SectionTitle>{expertise.title}</SectionTitle>
 						<ul>
 							{expertise.items.map((item) => (
@@ -44,12 +58,12 @@ export default function Home() {
 						</ul>
 					</section>
 					{/** Highlighted experience */}
-					<section className="order-2 sm:order-1 grid auto-rows-min gap-y-2 break-inside-avoid">
+					<section className="order-2 sm:order-1 grid auto-rows-min gap-y-2 break-inside-avoid print:hidden">
 						<SectionTitle>{experience.title.short}</SectionTitle>
 						<Timeline experience={experience} />
 					</section>
 					{/** Skills */}
-					<section className="order-3 md:order-2 grid auto-rows-min gap-y-2 break-inside-avoid">
+					<section className="order-3 md:order-2 grid auto-rows-min gap-y-2 break-inside-avoid print:order-2">
 						<SectionTitle>{skills.title}</SectionTitle>
 						<ul>
 							{skills.items.map((item) => (
@@ -60,7 +74,7 @@ export default function Home() {
 						</ul>
 					</section>
 					{/** Education & Certifications */}
-					<section className="order-4 grid auto-rows-min gap-y-2 break-inside-avoid">
+					<section className="order-4 grid auto-rows-min gap-y-2 break-inside-avoid print:order-1">
 						<SectionTitle>{education.title}</SectionTitle>
 						<ul className="list-disc ml-4 marker:text-green-500">
 							{education.items.map((item) => (
@@ -74,7 +88,7 @@ export default function Home() {
 						</ul>
 					</section>
 					{/** Interests */}
-					<section className="order-5 grid auto-rows-min gap-y-2 break-inside-avoid print:mt-16">
+					<section className="order-5 grid auto-rows-min gap-y-2 break-inside-avoid print:order-4">
 						<SectionTitle>{interests.title}</SectionTitle>
 						<ul>
 							{interests.items.map((item) => (
@@ -84,20 +98,40 @@ export default function Home() {
 							))}
 						</ul>
 					</section>
-					{/** Full experience */}
+					{/** Projects */}
 					<section className="order-6 sm:col-span-2 grid auto-rows-min gap-y-4 break-inside-avoid">
+						<SectionTitle className="sm:text-center">{projects.title}</SectionTitle>
+						<div className="grid md:grid-cols-2 gap-8">
+							{projects.items.map((item) => (
+								<Link
+									key={item.title}
+									href={item.link}
+									className="flex flex-col gap-2 mb-2 px-6 py-4 border rounded-xl transition hover:shadow-md"
+									target="_blank"
+								>
+									<Paragraph size="large">{item.title}</Paragraph>
+									<Paragraph weight="light">{item.description}</Paragraph>
+									<Paragraph size="small" weight="light" variant="subdued">
+										{projects.pre_technologies} {item.technologies.join(', ')}
+									</Paragraph>
+								</Link>
+							))}
+						</div>
+					</section>
+					{/** Full experience */}
+					<section className="order-7 sm:col-span-2 grid auto-rows-min gap-y-4 print:mt-16 break-inside-avoid">
 						<SectionTitle className="sm:text-center">{experience.title.full}</SectionTitle>
 						<Timeline variation="full" experience={experience} />
 					</section>
 				</div>
-				<div className="grid grid-cols-1 mt-12 break-inside-avoid print:hidden">
-					<div className="p-4 text-white bg-green-400 rounded-t-xl">
-						<SectionTitle>{cta.title}</SectionTitle>
-					</div>
+				<div className="mt-12 justify-center md:grid break-inside-avoid print:hidden">
+					<section className="grid gap-2 py-4 px-6 md:px-12 lg:px-16 bg-green-400 rounded-t-xl print:border print:rounded-xl">
+						<SectionTitle className="text-white print:text-green-600">{cta.title}</SectionTitle>
+						<div className="grid gap-2">
+							<ContactInfo info={info} />
+						</div>
+					</section>
 				</div>
-
-				{/** Project section: event-sourcing, this website and CI/CD, etc. */}
-				{/** Made with NextJS, Tailwind, blablabla */}
 			</main>
 		</>
 	);
