@@ -4,7 +4,10 @@
 		"title": "Dries Hooghe"
 	},
 	"info": {
-		"location": "Waregem, BE"
+		"location": "Waregem, BE",
+		"email": "dries.hooghe@gmail.com",
+		"linkedin": "linkedin.com/in/drieshooghe",
+		"github": "github.com/drieshooghe"
 	},
 	"introduction": "A software engineer specializing in web development and cloud engineering since 2017. With a strong foundation in both front-end and back-end technologies, I bring a versatile approach to building robust, scalable applications. My experience spans across B2B and B2C solutions, with a focus on delivering efficient, reliable systems that align with business goals. I'm passionate about using my skills to create impactful digital experiences and streamline cloud deployments.",
 	"expertise": {
@@ -112,6 +115,34 @@
 				"type": "Studies",
 				"organization": "Artevelde Hogeschool Ghent",
 				"date": "Jun '14"
+			}
+		]
+	},
+	"projects": {
+		"title": "Projects",
+		"pre_technologies": "Technologies used:",
+		"items": [
+			{
+				"title": "@ocoda/event-sourcing",
+				"description": "An open-source library to help people get started with event-sourcing and CQRS in NestJS, with support for MongoDB and DynamoDB as an event-store.",
+				"technologies": [
+					"Node.js",
+					"NestJS",
+					"MongoDB",
+					"DynamoDB",
+					"CircleCI"
+				],
+				"link": "https://github.com/ocoda/event-sourcing"
+			},
+			{
+				"title": "This resume website",
+				"description": "A statically generated website using NextJS and Tailwind CSS, hosted on AWS.",
+				"technologies": [
+					"React",
+					"Tailwind CSS",
+					"AWS"
+				],
+				"link": "https://github.com/drieshooghe/about"
 			}
 		]
 	},
