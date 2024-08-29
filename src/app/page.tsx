@@ -29,38 +29,34 @@ export default function Home() {
 			<main>
 				<div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
 					{/** Expertise */}
-					<div className="order-1 sm:order-2">
-						<section>
-							<SectionTitle>{expertise.title}</SectionTitle>
-							<ul>
-								{expertise.items.map((item) => (
-									<li key={item}>
-										<Paragraph weight="extralight">{item}</Paragraph>
-									</li>
-								))}
-							</ul>
-						</section>
-					</div>
+					<section className="order-1 sm:order-2 grid auto-rows-min gap-y-2">
+						<SectionTitle>{expertise.title}</SectionTitle>
+						<ul>
+							{expertise.items.map((item) => (
+								<li key={item} className="my-2">
+									<Paragraph weight="extralight">{item}</Paragraph>
+								</li>
+							))}
+						</ul>
+					</section>
 					{/** Highlighted experience */}
-					<div className="order-2 justify-self-center sm:order-1 sm:col-span-1 sm:col-start-auto w-fit">
+					<section className="order-2 sm:order-1 grid auto-rows-min gap-y-2">
 						<SectionTitle>{experience.title.short}</SectionTitle>
 						<Timeline experience={experience} />
-					</div>
+					</section>
 					{/** Skills */}
-					<div className="order-3 md:order-2">
-						<section>
-							<SectionTitle>{skills.title}</SectionTitle>
-							<ul>
-								{skills.items.map((item) => (
-									<li key={item}>
-										<Paragraph weight="extralight">{item}</Paragraph>
-									</li>
-								))}
-							</ul>
-						</section>
-					</div>
+					<section className="order-3 md:order-2 grid auto-rows-min gap-y-2">
+						<SectionTitle>{skills.title}</SectionTitle>
+						<ul>
+							{skills.items.map((item) => (
+								<li key={item} className="my-2">
+									<Paragraph weight="extralight">{item}</Paragraph>
+								</li>
+							))}
+						</ul>
+					</section>
 					{/** Education & Certifications */}
-					<div className="order-4 md:w-full sm:col-span-1 sm:col-start-auto w-fit justify-self-center">
+					<section className="order-4 grid auto-rows-min gap-y-2">
 						<SectionTitle>{education.title}</SectionTitle>
 						<ul className="list-disc ml-7 marker:text-green-500">
 							{education.items.map((item) => (
@@ -72,25 +68,23 @@ export default function Home() {
 								</li>
 							))}
 						</ul>
-					</div>
+					</section>
 					{/** Interests */}
-					<div className="order-5">
-						<section>
-							<SectionTitle>{interests.title}</SectionTitle>
-							<ul>
-								{interests.items.map((item) => (
-									<li key={item}>
-										<Paragraph weight="extralight">{item}</Paragraph>
-									</li>
-								))}
-							</ul>
-						</section>
-					</div>
+					<section className="order-5 grid auto-rows-min gap-y-2">
+						<SectionTitle>{interests.title}</SectionTitle>
+						<ul>
+							{interests.items.map((item) => (
+								<li key={item} className="my-2">
+									<Paragraph weight="extralight">{item}</Paragraph>
+								</li>
+							))}
+						</ul>
+					</section>
 					{/** Full experience */}
-					<div className="order-6 sm:col-span-2 sm:col-start-auto">
-						<SectionTitle>{experience.title.full}</SectionTitle>
+					<section className="order-6 sm:col-span-2 grid auto-rows-min gap-y-4">
+						<SectionTitle className="sm:text-center">{experience.title.full}</SectionTitle>
 						<Timeline variation="full" experience={experience} />
-					</div>
+					</section>
 				</div>
 				<div className="grid grid-cols-1 mt-12 ">
 					<div className="p-4 text-white bg-green-400 rounded-t-xl">
