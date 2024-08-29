@@ -36,7 +36,7 @@
 				"role": "Software engineer",
 				"period": "Feb '19 - Jan '23",
 				"location": "Ghent, BE",
-				"description": "Developed a new backend solution leveraging Event Sourcing and Domain-Driven Design within a microservice architecture using NestJS and GraphQL federation. Transitioned the cloud infrastructure to Infrastructure as Code (IaC) and aligned it with AWS' Well-Architected Framework, improving reliability and efficiency."
+				"description": "Developed a new backend solution leveraging Event Sourcing and Domain-Driven Design within a microservice architecture using NestJS and Apollo Federation (GraphQL). Transitioned the cloud infrastructure to Infrastructure as Code (IaC) and aligned it with AWS' Well-Architected Framework, improving reliability and efficiency."
 			},
 			{
 				"company": "Meditech",
@@ -135,7 +135,7 @@
 				"link": "https://github.com/ocoda/event-sourcing"
 			},
 			{
-				"title": "This resume website",
+				"title": "This resume",
 				"description": "A statically generated website using NextJS and Tailwind CSS, hosted on AWS.",
 				"technologies": [
 					"React",
