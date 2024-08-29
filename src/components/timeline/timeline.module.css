@@ -35,13 +35,29 @@
 			}
 
 			&:hover>.description>.title {
-				background-color: #55604E;
+				/* background-color: #55604E; */
 				color: white;
+
+				&::after {
+					width: 100%;
+				}
 			}
 
 			.title {
+				position: relative;
 				line-height: 28px;
 				margin-bottom: 0.25rem;
+
+				&::after {
+					content: '';
+					position: absolute;
+					background-color: #55604E;
+					width: 0;
+					height: 100%;
+					z-index: -1;
+
+					transition: width 150ms cubic-bezier(0.4, 0, 0.2, 1);
+				}
 			}
 
 			&:nth-child(odd) {
@@ -55,7 +71,11 @@
 				.title {
 					padding: 0 2rem 0 1rem;
 					margin-right: -2rem;
-					border-radius: 9999px 0 0 9999px;
+
+					&::after {
+						right: 0;
+						border-radius: 9999px 0 0 9999px;
+					}
 				}
 			}
 
@@ -70,7 +90,11 @@
 				.title {
 					padding: 0 1rem 0 2rem;
 					margin-left: -2rem;
-					border-radius: 0 9999px 9999px 0;
+
+					&::after {
+						left: 0;
+						border-radius: 0 9999px 9999px 0;
+					}
 				}
 			}
 		}

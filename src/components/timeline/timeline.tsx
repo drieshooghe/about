@@ -16,7 +16,7 @@ const Timeline: FC<Props> = ({ experience, variation = 'default' }) => {
 				<li key={item.company} className={`group ${styles.item}`}>
 					<CompanyLogo company={item.company} className={styles.icon} />
 					<div className={styles.description}>
-						<Paragraph size="large" className={`py-0.5 ${styles.title}`}>
+						<Paragraph size="large" className={`py-0.5 ${styles.title} moving-color`}>
 							{item.role}
 						</Paragraph>
 						<Paragraph variant="subdued" weight="light" size="small">
