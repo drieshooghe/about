@@ -27,19 +27,19 @@ export default function Home() {
 				</Paragraph>
 			</section>
 			<main>
-				<div className="grid grid-cols-1 sm:grid-cols-2 gap-x-2 sm:gap-x-4 gap-y-6 sm:gap-y-8">
+				<div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
 					{/** Expertise */}
-					<div className="order-1 sm:order-2 md:w-full sm:self-center sm:justify-self-end">
-						<div className="px-6 py-4 w-fit sm:-mr-4 sm:-ml-0 sm:rounded-l-xl sm:rounded-r-none sm:text-right rounded-r-xl md:rounded-xl md:mr-0 print:text-green-600">
+					<div className="order-1 sm:order-2">
+						<section>
 							<SectionTitle>{expertise.title}</SectionTitle>
-							<ul className="font-extralight">
+							<ul>
 								{expertise.items.map((item) => (
 									<li key={item}>
-										<Paragraph>{item}</Paragraph>
+										<Paragraph weight="extralight">{item}</Paragraph>
 									</li>
 								))}
 							</ul>
-						</div>
+						</section>
 					</div>
 					{/** Highlighted experience */}
 					<div className="order-2 justify-self-center sm:order-1 sm:col-span-1 sm:col-start-auto w-fit">
@@ -47,15 +47,17 @@ export default function Home() {
 						<Timeline experience={experience} />
 					</div>
 					{/** Skills */}
-					<div className="order-3 md:order-2 sm:col-span-1 sm:col-start-auto sm:self-center justify-self-end sm:justify-self-start">
-						<div className="px-6 py-4 -mr-4 text-right text-white bg-green-400 w-fit rounded-l-xl sm:text-left sm:-ml-4 sm:-mr-0 sm:rounded-l-none sm:rounded-r-xl md:rounded-xl md:ml-0 print:text-green-600">
+					<div className="order-3 md:order-2">
+						<section>
 							<SectionTitle>{skills.title}</SectionTitle>
-							<ul className="font-extralight">
+							<ul>
 								{skills.items.map((item) => (
-									<li key={item}>{item}</li>
+									<li key={item}>
+										<Paragraph weight="extralight">{item}</Paragraph>
+									</li>
 								))}
 							</ul>
-						</div>
+						</section>
 					</div>
 					{/** Education & Certifications */}
 					<div className="order-4 md:w-full sm:col-span-1 sm:col-start-auto w-fit justify-self-center">
@@ -72,15 +74,17 @@ export default function Home() {
 						</ul>
 					</div>
 					{/** Interests */}
-					<div className="order-5 md:w-full sm:col-span-1 sm:col-start-2 sm:self-center sm:justify-self-end">
-						<div className="px-6 py-4 -ml-4 text-white bg-green-400 w-fit rounded-r-xl sm:-ml-0 sm:-mr-4 sm:rounded-r-none sm:rounded-l-xl md:rounded-xl md:mr-0 print:text-green-600">
+					<div className="order-5">
+						<section>
 							<SectionTitle>{interests.title}</SectionTitle>
-							<ul className="font-extralight">
+							<ul>
 								{interests.items.map((item) => (
-									<li key={item}>{item}</li>
+									<li key={item}>
+										<Paragraph weight="extralight">{item}</Paragraph>
+									</li>
 								))}
 							</ul>
-						</div>
+						</section>
 					</div>
 					{/** Full experience */}
 					<div className="order-6 sm:col-span-2 sm:col-start-auto">

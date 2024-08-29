@@ -2,7 +2,7 @@ import type { FC, PropsWithChildren } from 'react';
 
 interface Props extends PropsWithChildren {
 	variant?: 'subdued' | 'normal';
-	weight?: 'light' | 'normal' | 'bold';
+	weight?: 'extralight' | 'light' | 'normal' | 'bold';
 	size?: 'small' | 'medium' | 'large';
 	className?: string;
 }
@@ -18,6 +18,8 @@ const getVariantValue = (variant: Props['variant']) => {
 
 const getWeightValue = (weight: Props['weight']) => {
 	switch (weight) {
+		case 'extralight':
+			return 'font-extralight';
 		case 'light':
 			return 'font-light';
 		case 'normal':
