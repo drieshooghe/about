@@ -58,7 +58,7 @@ export default function Home() {
 					{/** Education & Certifications */}
 					<section className="order-4 grid auto-rows-min gap-y-2">
 						<SectionTitle>{education.title}</SectionTitle>
-						<ul className="list-disc ml-7 marker:text-green-500">
+						<ul className="list-disc ml-4 marker:text-green-500">
 							{education.items.map((item) => (
 								<li key={item.title} className="mb-2">
 									<Paragraph size="large">{item.title}</Paragraph>
