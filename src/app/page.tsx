@@ -124,10 +124,10 @@ export default function Home() {
 						<Timeline variation="full" experience={experience} />
 					</section>
 				</div>
-				<div className="mt-12 justify-center md:grid break-inside-avoid print:hidden">
-					<section className="grid gap-2 py-4 px-6 md:px-12 lg:px-16 bg-green-400 rounded-t-xl print:border print:rounded-xl">
+				<div className="mt-12 flex justify-center break-inside-avoid print:hidden">
+					<section className="gap-3 py-4 px-6 flex flex-col items-center w-full md:max-w-md bg-green-400 rounded-t-xl print:border print:rounded-xl">
 						<SectionTitle className="text-white print:text-green-600">{cta.title}</SectionTitle>
-						<div className="grid gap-2">
+						<div className="grid gap-3">
 							<ContactInfo info={info} />
 						</div>
 					</section>
