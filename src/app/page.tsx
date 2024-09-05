@@ -65,13 +65,25 @@ export default function Home() {
 					{/** Skills */}
 					<section className="order-3 md:order-2 grid auto-rows-min gap-y-2 break-inside-avoid print:order-2">
 						<SectionTitle>{skills.title}</SectionTitle>
-						<ul>
-							{skills.items.map((item) => (
-								<li key={item} className="my-2">
-									<Paragraph weight="extralight">{item}</Paragraph>
-								</li>
-							))}
-						</ul>
+						<div className="flex flex-wrap md:grid md:grid-cols-2 gap-2">
+							{skills.items.map(({ category, tools }) => {
+								return (
+									<div className="flex flex-col gap-2">
+										<Paragraph key={category} size="medium" weight="normal">
+											{category}
+										</Paragraph>
+										<ul className="flex flex-wrap gap-1">
+											{tools.map((tool) => (
+												<li key={tool.name}>
+													<Paragraph weight="extralight" size="small" className="py-0.5 px-2 rounded-lg border whitespace-nowrap">{tool.name}</Paragraph>
+												</li>
+											))}
+										</ul>
+									</div>
+								);
+							})}
+						</div>
+						
 					</section>
 					{/** Education & Certifications */}
 					<section className="order-4 grid auto-rows-min gap-y-2 break-inside-avoid print:order-1">

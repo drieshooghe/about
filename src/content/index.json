@@ -64,14 +64,104 @@
 	"skills": {
 		"title": "Skills",
 		"items": [
-			"Node.js & Typescript",
-			"GraphQL",
-			"Docker",
-			"Amazon Web Services",
-			"Github Actions & CircleCI",
-			"SQL & NoSQL",
-			"Sentry",
-			"Python"
+			{
+				"category": "Frontend",
+				"tools": [
+					{
+						"name": "React.js",
+						"logo": "react"
+					},
+					{
+						"name": "Next.js",
+						"logo": "next"
+					},
+					{
+						"name": "Tailwind CSS",
+						"logo": "tailwindcss"
+					}
+				]
+			},
+			{
+				"category": "Backend",
+				"tools": [
+					{
+						"name": "Node.js",
+						"logo": "nodejs"
+					},
+					{
+						"name": "NestJS",
+						"logo": "nestjs"
+					},
+					{
+						"name": "GraphQL",
+						"logo": "graphql"
+					},
+					{
+						"name": "Apollo Federation",
+						"logo": "apollo"
+					}
+				]
+			},
+			{
+				"category": "Cloud / Infra / DevOps",
+				"tools": [
+					{
+						"name": "Amazon Web Services",
+						"logo": "aws"
+					},
+					{
+						"name": "Docker",
+						"logo": "docker"
+					},
+					{
+						"name": "Github Actions",
+						"logo": "github"
+					},
+					{
+						"name": "CircleCI",
+						"logo": "circleci"
+					}
+				]
+			},
+			{
+				"category": "Databases",
+				"tools": [
+					{
+						"name": "MongoDB",
+						"logo": "mongodb"
+					},
+					{
+						"name": "PostgreSQL",
+						"logo": "postgresql"
+					}
+				]
+			},
+			{
+				"category": "Monitoring",
+				"tools": [
+					{
+						"name": "Sentry",
+						"logo": "sentry"
+					},
+					{
+						"name": "Cloudwatch",
+						"logo": "cloudwatch"
+					}
+				]
+			},
+			{
+				"category": "Programming languages",
+				"tools": [
+					{
+						"name": "Typescript",
+						"logo": "typescript"
+					},
+					{
+						"name": "Python",
+						"logo": "python"
+					}
+				]
+			}
 		]
 	},
 	"interests": {
