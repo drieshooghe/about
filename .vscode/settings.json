@@ -32,6 +32,9 @@
 	"[css]": {
 		"editor.defaultFormatter": "vscode.css-language-features"
 	},
+	"[yaml]": {
+		"editor.defaultFormatter": "redhat.vscode-yaml"
+	},
 	"typescript.tsserver.log": "off",
-	"typescript.format.enable": false
+	"typescript.format.enable": false,
 }
