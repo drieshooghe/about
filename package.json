@@ -2,8 +2,9 @@
 	"name": "@drieshooghe/about",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "pnpm --filter @drieshooghe/about-website dev",
-		"build": "pnpm --filter @drieshooghe/about-website build",
+		"infra:diff": "pnpm --filter @drieshooghe/about-infrastructure diff",
+		"web:dev": "pnpm --filter @drieshooghe/about-website dev",
+		"web:build": "pnpm --filter @drieshooghe/about-website build",
 		"lint": "pnpm --filter @drieshooghe/about-* lint",
 		"format": "pnpm --filter @drieshooghe/about-* format"
 	}
