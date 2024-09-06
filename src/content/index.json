@@ -64,7 +64,7 @@
 	},
 	"skills": {
 		"title": "Skills",
-		"description": "A list of technologies and tools I enjoy using on a daily basis, though not exhaustive, these are the ones I particularly love working with.",
+		"description": "A non-exhaustive list of technologies and tools I enjoy using on a daily basis.",
 		"items": [
 			{
 				"category": "Backend",
