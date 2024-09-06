@@ -7,8 +7,8 @@
 		"build": "next build",
 		"image:generate": "./generate-images.ts",
 		"start": "next start",
-		"lint": "biome lint --write",
-		"format": "biome format --write"
+		"lint": "biome lint --write ./src",
+		"format": "biome format --write ./src"
 	},
 	"dependencies": {
 		"next": "14.2.5",
