@@ -24,7 +24,7 @@ export default function Home() {
 	return (
 		<>
 			<header className="flex flex-col print:flex-row  items-center mt-10 text-green-600 print:gap-4 relative">
-				<button id="print-button" type="button" className="absolute right-0 top-0 print:hidden">
+				<button id="print-button" type="button" className="absolute right-0 bottom-0 print:hidden">
 					<Printer className="text-green-300 transition-colors w-8 h-8 hover:text-green-400" />
 				</button>
 				<Avatar />
@@ -119,7 +119,7 @@ export default function Home() {
 						</ul>
 					</section>
 					{/** Projects */}
-					<section className="order-6 sm:col-span-2 grid auto-rows-min gap-y-4 break-inside-avoid">
+					<section className="order-6 sm:col-span-2 grid auto-rows-min gap-y-4 break-inside-avoid print:mt-16">
 						<SectionTitle className="sm:text-center">{projects.title}</SectionTitle>
 						<div className="grid md:grid-cols-2 gap-8">
 							{projects.items.map((item) => (
@@ -139,7 +139,7 @@ export default function Home() {
 						</div>
 					</section>
 					{/** Full experience */}
-					<section className="order-7 sm:col-span-2 grid auto-rows-min gap-y-4 print:mt-16 break-inside-avoid">
+					<section className="order-7 sm:col-span-2 grid auto-rows-min gap-y-4 break-inside-avoid print:mt-4">
 						<SectionTitle className="sm:text-center">{experience.title.full}</SectionTitle>
 						<Timeline variation="full" experience={experience} />
 					</section>
