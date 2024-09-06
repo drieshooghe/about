@@ -1,4 +1,4 @@
-import { Stack, type StackProps } from "aws-cdk-lib";
+import { Duration, Stack, type StackProps } from "aws-cdk-lib";
 import { Distribution, HttpVersion } from "aws-cdk-lib/aws-cloudfront";
 import { S3StaticWebsiteOrigin } from "aws-cdk-lib/aws-cloudfront-origins";
 import { Effect, PolicyStatement, StarPrincipal } from "aws-cdk-lib/aws-iam";
@@ -16,7 +16,7 @@ export class WebsiteStack extends Stack {
 	private createBucket(): Bucket {
 		const bucket = new Bucket(this, 'WebsiteBucket', {
 			bucketName: 'drieshooghe-website',
-			lifecycleRules: [{ noncurrentVersionsToRetain: 10 }],
+			lifecycleRules: [{ noncurrentVersionsToRetain: 10, noncurrentVersionExpiration: Duration.days(1) }],
 			encryption: BucketEncryption.S3_MANAGED,
 			versioned: true,
 		});
