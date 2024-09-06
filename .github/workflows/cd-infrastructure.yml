@@ -1,0 +1,70 @@
+name: CD infrastructure
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit:
+        description: "Full commit SHA to deploy"
+  push:
+    branches: ["master"]
+    paths: ["infrastructure/**.ts"]
+
+concurrency: infrastructure
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      BUILD_VERSION: ${{ github.event.inputs.commit || github.sha }}
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.BUILD_VERSION }}
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
+
+      - name: Get the pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup the pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Configure AWS credentials
+        id: aws-credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/AboutInfrastructureDeployRole
+          aws-region: eu-central-1
+          mask-aws-account-id: true
+
+      - name: Deploy infrastructure
+        run: |
+          cd infrastructure
+          ./node_modules/.bin/cdk deploy \
+            --require-approval never \
+            --all \
+            --verbose
