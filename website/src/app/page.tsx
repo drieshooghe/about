@@ -11,14 +11,14 @@ import {
 	skills,
 } from '@content/index.json';
 
-import { At, GitHub, LinkedIn, Location, Printer } from '@assets/icons';
-import Avatar from '@components/avatar';
-import ContactInfo from '@components/contact-info';
-import Paragraph from '@components/paragraph';
-import SectionTitle from '@components/section-title';
-import Timeline from '@components/timeline/timeline';
 import Link from 'next/link';
 import React from 'react';
+import { At, GitHub, LinkedIn, Location, Printer } from '../assets/icons';
+import Avatar from '../components/avatar';
+import ContactInfo from '../components/contact-info';
+import Paragraph from '../components/paragraph';
+import SectionTitle from '../components/section-title';
+import Timeline from '../components/timeline/timeline';
 
 export default function Home() {
 	return (

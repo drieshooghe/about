@@ -1,7 +1,7 @@
-import { At, GitHub, LinkedIn } from '@assets/icons';
 import type { info } from '@content/index.json';
 import Link from 'next/link';
 import type { FC } from 'react';
+import { At, GitHub, LinkedIn } from '../assets/icons';
 import Paragraph from './paragraph';
 
 interface Props {

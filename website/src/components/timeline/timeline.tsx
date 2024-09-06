@@ -1,7 +1,7 @@
-import CompanyLogo from '@components/company-logo';
-import Paragraph from '@components/paragraph';
 import type { experience } from '@content/index.json';
 import type { FC } from 'react';
+import CompanyLogo from '../company-logo';
+import Paragraph from '../paragraph';
 import styles from './timeline.module.css';
 
 interface Props {

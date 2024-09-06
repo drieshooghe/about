@@ -2,8 +2,8 @@ import globalContent from '@content/global.json';
 import type { Metadata } from 'next';
 import { Outfit } from 'next/font/google';
 import './globals.css';
-import Paragraph from '@components/paragraph';
 import Script from 'next/script';
+import Paragraph from '../components/paragraph';
 
 const font = Outfit({ subsets: ['latin'], variable: '--font-outfit' });
 

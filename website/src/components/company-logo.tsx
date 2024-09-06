@@ -1,5 +1,5 @@
-import { Cheqroom, DASMedia, Meditech } from '@assets/icons';
 import type { FC } from 'react';
+import { Cheqroom, DASMedia, Meditech } from '../assets/icons';
 
 interface Props {
 	company: string;
