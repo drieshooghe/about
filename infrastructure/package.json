@@ -5,12 +5,11 @@
     "infrastructure": "bin/infrastructure.js"
   },
   "scripts": {
-    "build": "tsc",
-    "cdk": "cdk",
+    "diff": "cdk diff --profile drieshooghe --all",
+    "deploy": "cdk deploy --profile drieshooghe --all --require-approval never",
     "format": "biome format --write ./bin ./lib",
     "lint": "biome lint --write ./bin ./lib",
-    "test": "jest",
-    "watch": "tsc -w"
+    "test": "jest"
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
