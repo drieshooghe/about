@@ -10,12 +10,10 @@
 		"lint": "biome lint --write ./src",
 		"format": "biome format --write ./src"
 	},
-	"dependencies": {
+	"devDependencies": {
 		"next": "14.2.5",
 		"react": "^18",
-		"react-dom": "^18"
-	},
-	"devDependencies": {
+		"react-dom": "^18",
 		"@biomejs/biome": "1.8.3",
 		"@types/node": "^20",
 		"@types/react": "^18",
