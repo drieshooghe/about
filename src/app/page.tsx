@@ -25,7 +25,7 @@ export default function Home() {
 		<>
 			<header className="flex flex-col print:flex-row  items-center mt-10 text-green-600 print:gap-4 relative">
 				<button id="print-button" type="button" className="absolute right-0 bottom-0 print:hidden">
-					<Printer className="text-green-300 transition-colors w-8 h-8 hover:text-green-400" />
+					<Printer className="text-green-300 transition-colors w-6 h-6 md:w-8 md:h-8 hover:text-green-400" />
 				</button>
 				<Avatar />
 				<div className="flex flex-col grow items-center print:items-start">
@@ -145,7 +145,7 @@ export default function Home() {
 					</section>
 				</div>
 				<div className="mt-12 flex justify-center break-inside-avoid print:hidden">
-					<section className="gap-3 py-4 px-6 flex flex-col items-center w-full md:max-w-md bg-green-400 rounded-t-xl print:border print:rounded-xl">
+					<section className="gap-3 py-4 px-6 flex flex-col items-center w-full md:max-w-md bg-green-400 rounded-xl -mb-8 outline outline-8 outline-white">
 						<SectionTitle className="text-white print:text-green-600">{cta.title}</SectionTitle>
 						<div className="grid gap-3">
 							<ContactInfo info={info} />
