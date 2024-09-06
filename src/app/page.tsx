@@ -63,19 +63,28 @@ export default function Home() {
 						<Timeline experience={experience} />
 					</section>
 					{/** Skills */}
-					<section className="order-3 md:order-2 grid auto-rows-min gap-y-2 break-inside-avoid print:order-2">
+					<section className="order-3 md:order-2 grid auto-rows-min gap-y-2 break-inside-avoid print:order-1">
 						<SectionTitle>{skills.title}</SectionTitle>
-						<div className="flex flex-wrap md:grid md:grid-cols-2 gap-2">
+						<Paragraph size="medium" weight="light">
+							{skills.description}
+						</Paragraph>
+						<div className="grid md:grid-cols-2 gap-2.5">
 							{skills.items.map(({ category, tools }) => {
 								return (
-									<div className="flex flex-col gap-2">
-										<Paragraph key={category} size="medium" weight="normal">
+									<div key={category} className="flex flex-col gap-2">
+										<Paragraph size="medium" weight="normal">
 											{category}
 										</Paragraph>
 										<ul className="flex flex-wrap gap-1">
 											{tools.map((tool) => (
 												<li key={tool.name}>
-													<Paragraph weight="extralight" size="small" className="py-0.5 px-2 rounded-lg border whitespace-nowrap">{tool.name}</Paragraph>
+													<Paragraph
+														weight="extralight"
+														size="small"
+														className="py-0.5 px-2 rounded-lg border whitespace-nowrap"
+													>
+														{tool.name}
+													</Paragraph>
 												</li>
 											))}
 										</ul>
@@ -83,10 +92,9 @@ export default function Home() {
 								);
 							})}
 						</div>
-						
 					</section>
 					{/** Education & Certifications */}
-					<section className="order-4 grid auto-rows-min gap-y-2 break-inside-avoid print:order-1">
+					<section className="order-4 grid auto-rows-min gap-y-2 break-inside-avoid print:order-2">
 						<SectionTitle>{education.title}</SectionTitle>
 						<ul className="list-disc ml-4 marker:text-green-500">
 							{education.items.map((item) => (

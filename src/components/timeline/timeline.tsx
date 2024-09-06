@@ -23,7 +23,7 @@ const Timeline: FC<Props> = ({ experience, variation = 'default' }) => {
 							@ {item.company} | {item.period}
 						</Paragraph>
 						{variation === 'full' && (
-							<Paragraph weight="light" size="medium">
+							<Paragraph weight="light" size="medium" className="mt-2">
 								{item.description}
 							</Paragraph>
 						)}
