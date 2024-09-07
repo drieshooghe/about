@@ -5,7 +5,7 @@ import { OperationsStack, WebsiteStack } from '../lib';
 
 const app = new cdk.App();
 
-/** 
+/**
  * Description: the operations stack is responsible for managing the deployment of the infrastructure.
  */
 new OperationsStack(app, 'OperationsStack');
