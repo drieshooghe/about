@@ -1,6 +1,7 @@
-import { Duration, Stack, type StackProps } from 'aws-cdk-lib';
+import { Duration } from 'aws-cdk-lib';
 import { Effect, OpenIdConnectProvider, PolicyStatement, Role, WebIdentityPrincipal } from 'aws-cdk-lib/aws-iam';
 import type { Construct } from 'constructs';
+import { Stack, type StackProps } from './constructs';
 
 export class OperationsStack extends Stack {
   private readonly githubTokenDomain = 'token.actions.githubusercontent.com';

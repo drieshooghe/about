@@ -1,4 +1,5 @@
-import { Duration, Stack, type StackProps } from 'aws-cdk-lib';
+import { Duration } from 'aws-cdk-lib';
+import type { Certificate } from 'aws-cdk-lib/aws-certificatemanager';
 import {
   CfnOriginAccessControl,
   Distribution,
@@ -8,15 +9,24 @@ import {
 } from 'aws-cdk-lib/aws-cloudfront';
 import { S3BucketOrigin } from 'aws-cdk-lib/aws-cloudfront-origins';
 import { Effect, PolicyStatement, ServicePrincipal, StarPrincipal } from 'aws-cdk-lib/aws-iam';
+import { ARecord, type IHostedZone, RecordTarget } from 'aws-cdk-lib/aws-route53';
+import { CloudFrontTarget } from 'aws-cdk-lib/aws-route53-targets';
 import { BlockPublicAccess, Bucket, BucketEncryption } from 'aws-cdk-lib/aws-s3';
 import type { Construct } from 'constructs';
+import { Stack, type StackProps } from './constructs';
+
+interface WebsiteStackProps extends StackProps {
+  hostedZone: IHostedZone;
+  websiteCertificate: Certificate;
+}
 
 export class WebsiteStack extends Stack {
-  constructor(scope: Construct, id: string, props?: StackProps) {
-    super(scope, id, props);
+  constructor(scope: Construct, id: string, { hostedZone, websiteCertificate, ...props }: WebsiteStackProps) {
+    super(scope, id, { ...props, crossRegionReferences: true });
 
     const bucket = this.createBucket();
-    this.createDistribution(bucket);
+    const distribution = this.createDistribution(bucket, websiteCertificate);
+    this.createRecord(hostedZone, distribution);
   }
 
   private createBucket(): Bucket {
@@ -64,7 +74,7 @@ export class WebsiteStack extends Stack {
     return bucket;
   }
 
-  private createDistribution(bucket: Bucket): Distribution {
+  private createDistribution(bucket: Bucket, certificate: Certificate): Distribution {
     const oac = new CfnOriginAccessControl(this, 'WebsiteBucketOAC', {
       originAccessControlConfig: {
         name: 'WebsiteBucketOAC',
@@ -82,6 +92,8 @@ export class WebsiteStack extends Stack {
         }),
         viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
       },
+      domainNames: ['www.drieshooghe.com'],
+      certificate,
       defaultRootObject: 'index.html',
       errorResponses: [
         {
@@ -109,5 +121,13 @@ export class WebsiteStack extends Stack {
     );
 
     return distribution;
+  }
+
+  private createRecord(hostedZone: IHostedZone, distribution: Distribution) {
+    return new ARecord(this, 'WebsiteRecord', {
+      recordName: 'www.drieshooghe.com',
+      target: RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
+      zone: hostedZone,
+    });
   }
 }
