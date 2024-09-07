@@ -12,8 +12,7 @@ import {
 } from '@content/index.json';
 
 import Link from 'next/link';
-import React from 'react';
-import { At, GitHub, LinkedIn, Location, Printer } from '../assets/icons';
+import { Location, Printer } from '../assets/icons';
 import Avatar from '../components/avatar';
 import ContactInfo from '../components/contact-info';
 import Paragraph from '../components/paragraph';

@@ -1,5 +1,5 @@
 import globalContent from '@content/global.json';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Outfit } from 'next/font/google';
 import './globals.css';
 import Script from 'next/script';
@@ -8,6 +8,9 @@ import Paragraph from '../components/paragraph';
 const font = Outfit({ subsets: ['latin'], variable: '--font-outfit' });
 
 export const metadata: Metadata = globalContent.meta;
+export const viewport: Viewport = {
+  colorScheme: 'only light',
+};
 
 export default function RootLayout({
   children,
