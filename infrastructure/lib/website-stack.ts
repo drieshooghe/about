@@ -125,9 +125,10 @@ export class WebsiteStack extends Stack {
 
   private createRecord(hostedZone: IHostedZone, distribution: Distribution) {
     return new ARecord(this, 'WebsiteRecord', {
-      recordName: 'www.drieshooghe.com',
+      recordName: 'www',
       target: RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
       zone: hostedZone,
+      ttl: Duration.hours(1),
     });
   }
 }
