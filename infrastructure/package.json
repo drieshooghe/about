@@ -7,12 +7,9 @@
   "scripts": {
     "diff": "cdk diff --profile drieshooghe --all",
     "deploy": "cdk deploy --profile drieshooghe --all --require-approval never",
-    "format": "biome format --write ./bin ./lib",
-    "lint": "biome lint --write ./bin ./lib",
     "test": "jest"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.8.3",
     "@types/jest": "^29.5.12",
     "@types/node": "20.14.9",
     "aws-cdk-lib": "2.156.0",
