@@ -21,7 +21,8 @@
       "@app/*": ["./src/app/*"],
       "@content/*": ["./src/content/*"],
       "@assets/*": ["./src/assets/*"],
-      "@components/*": ["./src/components/*"]
+      "@components/*": ["./src/components/*"],
+      "@image/*": ["./src/assets/images/optimized/*"]
     }
   },
   "include": ["website/next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

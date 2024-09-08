@@ -80,7 +80,7 @@ const imageConfigs: ImageConfig[] = [
   },
 ];
 
-const outputPath = path.resolve(__dirname, 'public/image');
+const outputPath = path.resolve(__dirname, 'src/assets/images/optimized');
 
 generateImages(imageConfigs, outputPath)
   .then(() => console.log('All images have been generated!'))
