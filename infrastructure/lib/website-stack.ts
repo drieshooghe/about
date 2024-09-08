@@ -1,6 +1,7 @@
 import { Duration } from 'aws-cdk-lib';
 import type { Certificate } from 'aws-cdk-lib/aws-certificatemanager';
 import {
+  CachePolicy,
   CfnOriginAccessControl,
   Distribution,
   HttpVersion,
@@ -84,13 +85,16 @@ export class WebsiteStack extends Stack {
       },
     });
 
+    const origin = S3BucketOrigin.withOriginAccessControl(bucket, {
+      originAccessControlId: oac.attrId,
+    });
+
     const distribution = new Distribution(this, 'WebsiteDistribution', {
       comment: 'drieshooghe.com website distribution',
       defaultBehavior: {
-        origin: S3BucketOrigin.withOriginAccessControl(bucket, {
-          originAccessControlId: oac.attrId,
-        }),
+        origin,
         viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+        cachePolicy: new CachePolicy(this, 'WebsiteCachePolicy', {}),
       },
       domainNames: ['www.drieshooghe.com'],
       certificate,
@@ -105,6 +109,10 @@ export class WebsiteStack extends Stack {
       httpVersion: HttpVersion.HTTP2_AND_3,
       priceClass: PriceClass.PRICE_CLASS_100,
     });
+
+    // Disable caching for the index.html page
+    // That way we can leverage the content hashes
+    distribution.addBehavior('/', origin, { cachePolicy: CachePolicy.CACHING_DISABLED });
 
     bucket.addToResourcePolicy(
       new PolicyStatement({
