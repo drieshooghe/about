@@ -40,7 +40,10 @@ export class OperationsStack extends Stack {
       new PolicyStatement({
         effect: Effect.ALLOW,
         actions: ['sts:AssumeRole'],
-        resources: [`arn:aws:iam::${this.account}:role/cdk-*-${this.account}-${this.region}`],
+        resources: [
+          `arn:aws:iam::${this.account}:role/cdk-*-${this.account}-us-east-1`, // For the certificate-stack
+          `arn:aws:iam::${this.account}:role/cdk-*-${this.account}-${this.region}`,
+        ],
       }),
     );
   }
