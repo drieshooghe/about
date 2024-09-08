@@ -2,7 +2,7 @@
   "name": "@drieshooghe/about",
   "version": "0.0.1",
   "scripts": {
-    "infra:diff": "pnpm --filter @drieshooghe/about-infrastructure diff",
+    "infra:diff": "pnpm --filter @drieshooghe/about-infrastructure diff:infra",
     "web:dev": "pnpm --filter @drieshooghe/about-website dev",
     "web:build": "pnpm --filter @drieshooghe/about-website build",
     "ci": "biome ci",

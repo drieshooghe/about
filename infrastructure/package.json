@@ -5,8 +5,10 @@
     "infrastructure": "bin/infrastructure.js"
   },
   "scripts": {
-    "diff": "cdk diff --profile drieshooghe --all",
-    "deploy": "cdk deploy --profile drieshooghe --all --require-approval never",
+    "diff:infra": "cdk diff --context target=infrastructure --profile drieshooghe --all",
+    "diff:web": "cdk diff --context target=website --profile drieshooghe --all",
+    "deploy:infra": "cdk deploy --context target=infrastructure --profile drieshooghe --all --require-approval never",
+    "deploy:web": "cdk deploy --context target=website --profile drieshooghe --all --require-approval never",
     "test": "jest"
   },
   "devDependencies": {

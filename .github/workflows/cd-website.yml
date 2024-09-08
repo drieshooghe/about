@@ -1,4 +1,4 @@
-name: CD infrastructure
+name: CD website
 
 on:
   workflow_dispatch:
@@ -7,9 +7,9 @@ on:
         description: "Full commit SHA to deploy"
   push:
     branches: ["master"]
-    paths: ["infrastructure/**.ts"]
+    paths: ["website/**.ts"]
 
-concurrency: infrastructure
+concurrency: website
 
 jobs:
   deploy:
@@ -61,11 +61,16 @@ jobs:
           aws-region: eu-central-1
           mask-aws-account-id: true
 
+      - name: Build website
+        working-directory: ./website
+        run: |
+          pnpm build
+
       - name: Deploy infrastructure
         working-directory: ./infrastructure
         run: |
           ./node_modules/.bin/cdk deploy \
-            --context target=infrastructure \
+            --context target=website \
             --require-approval never \
             --all \
             --verbose
