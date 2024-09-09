@@ -94,7 +94,7 @@ export class WebsiteStack extends Stack {
       defaultBehavior: {
         origin,
         viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
-        cachePolicy: new CachePolicy(this, 'WebsiteCachePolicy', {}),
+        cachePolicy: CachePolicy.CACHING_OPTIMIZED,
       },
       domainNames: ['www.drieshooghe.com'],
       certificate,
