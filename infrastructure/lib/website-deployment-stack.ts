@@ -1,5 +1,4 @@
 import * as path from 'node:path';
-import { Duration } from 'aws-cdk-lib';
 import { Bucket } from 'aws-cdk-lib/aws-s3';
 import {
   BucketDeployment,
@@ -24,28 +23,24 @@ export class WebsiteDeploymentStack extends Stack {
       serverSideEncryption: ServerSideEncryption.AES_256,
     };
 
-    new BucketDeployment(this, 'PageWebsiteDeployment', {
+    new BucketDeployment(this, 'CachedWebsiteDeployment', {
       ...settings,
       sources: [
         Source.asset(path.resolve(__dirname, '../../website/out'), {
-          exclude: ['!index.html', '!404.html', '!index.txt'],
+          exclude: ['/**/*', '!/_next/static/**/*'],
         }),
       ],
-      cacheControl: [CacheControl.noStore()],
+      cacheControl: [CacheControl.fromString('max-age=31536000,public,immutable')],
     });
 
-    new BucketDeployment(this, 'AssetWebsiteDeployment', {
+    new BucketDeployment(this, 'NonCachedWebsiteDeployment', {
       ...settings,
       sources: [
         Source.asset(path.resolve(__dirname, '../../website/out'), {
-          exclude: ['index.html', '404.html', 'index.txt'],
+          exclude: ['/_next/static/**/*'],
         }),
       ],
-      cacheControl: [
-        CacheControl.setPublic(),
-        CacheControl.maxAge(Duration.hours(24)),
-        CacheControl.staleWhileRevalidate(Duration.hours(24)),
-      ],
+      cacheControl: [CacheControl.fromString('max-age=0,no-cache,no-store,must-revalidate')],
     });
   }
 }
