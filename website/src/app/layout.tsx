@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Script>{`document.getElementById('print-button').addEventListener('click',function() {window.print();});`}</Script>
-      <body className={`${font.variable} font-sans`}>
+      <body className={`${font.variable} font-sans bg-white`}>
         <div className="absolute top-0 flex h-28 lg:h-32 w-screen bg-green-300 print:hidden" />
         <div className="max-w-xs mx-auto sm:max-w-md md:max-w-2xl xl:max-w-5xl md:mx-auto print:max-w-2xl">
           {children}
