@@ -1,6 +1,6 @@
 import type { CloudFrontRequestEvent } from 'aws-lambda';
 
-const handler = (event: CloudFrontRequestEvent) => {
+async function handler(event: CloudFrontRequestEvent) {
   const request = event.Records[0].cf.request;
   const headers = request.headers;
 
@@ -27,6 +27,4 @@ const handler = (event: CloudFrontRequestEvent) => {
   }
 
   return request;
-};
-
-export { handler };
+}
