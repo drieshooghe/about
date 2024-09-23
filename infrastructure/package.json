@@ -12,6 +12,7 @@
     "test": "jest"
   },
   "devDependencies": {
+    "@types/aws-cloudfront-function": "^1.0.4",
     "@types/aws-lambda": "^8.10.145",
     "@types/jest": "^29.5.12",
     "@types/node": "20.14.9",
