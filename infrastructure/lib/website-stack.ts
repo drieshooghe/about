@@ -34,7 +34,7 @@ export class WebsiteStack extends Stack {
     const bucket = this.createBucket();
     const redirectFunction = this.createRedirectFunction();
     const distribution = this.createDistribution(bucket, redirectFunction, websiteCertificate);
-    this.createRecord(hostedZone, distribution);
+    this.createRecords(hostedZone, distribution);
   }
 
   private createBucket(): Bucket {
@@ -154,8 +154,13 @@ export class WebsiteStack extends Stack {
     return distribution;
   }
 
-  private createRecord(hostedZone: IHostedZone, distribution: Distribution) {
-    return new ARecord(this, 'WebsiteRecord', {
+  private createRecords(hostedZone: IHostedZone, distribution: Distribution) {
+    new ARecord(this, 'ApexWebsiteRecord', {
+      target: RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
+      zone: hostedZone,
+      ttl: Duration.hours(1),
+    });
+    new ARecord(this, 'WebsiteRecord', {
       recordName: 'www',
       target: RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
       zone: hostedZone,
