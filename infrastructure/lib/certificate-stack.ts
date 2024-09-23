@@ -10,12 +10,13 @@ export class CertificateStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, { ...props, env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: 'us-east-1' } });
 
-    this.hostedZone = HostedZone.fromLookup(this, 'WebsiteHostedZone', {
-      domainName: 'drieshooghe.com',
-    });
+    const domainName = 'drieshooghe.com';
+
+    this.hostedZone = HostedZone.fromLookup(this, 'WebsiteHostedZone', { domainName });
 
     this.websiteCertificate = new Certificate(this, 'WebsiteCertificate', {
-      domainName: 'www.drieshooghe.com',
+      domainName,
+      subjectAlternativeNames: [`www.${domainName}`],
       validation: CertificateValidation.fromDns(this.hostedZone),
     });
   }

@@ -1,9 +1,14 @@
+import { join } from 'node:path';
 import { Duration } from 'aws-cdk-lib';
 import type { Certificate } from 'aws-cdk-lib/aws-certificatemanager';
 import {
   CachePolicy,
   CfnOriginAccessControl,
+  Function as CloudfrontFunction,
   Distribution,
+  FunctionCode,
+  FunctionEventType,
+  FunctionRuntime,
   HttpVersion,
   PriceClass,
   ViewerProtocolPolicy,
@@ -15,6 +20,7 @@ import { CloudFrontTarget } from 'aws-cdk-lib/aws-route53-targets';
 import { BlockPublicAccess, Bucket, BucketEncryption } from 'aws-cdk-lib/aws-s3';
 import type { Construct } from 'constructs';
 import { Stack, type StackProps } from './constructs';
+import { generateFunctionCode } from './utils';
 
 interface WebsiteStackProps extends StackProps {
   hostedZone: IHostedZone;
@@ -26,7 +32,8 @@ export class WebsiteStack extends Stack {
     super(scope, id, { ...props, crossRegionReferences: true });
 
     const bucket = this.createBucket();
-    const distribution = this.createDistribution(bucket, websiteCertificate);
+    const redirectFunction = this.createRedirectFunction();
+    const distribution = this.createDistribution(bucket, redirectFunction, websiteCertificate);
     this.createRecord(hostedZone, distribution);
   }
 
@@ -75,7 +82,22 @@ export class WebsiteStack extends Stack {
     return bucket;
   }
 
-  private createDistribution(bucket: Bucket, certificate: Certificate): Distribution {
+  private createRedirectFunction(): CloudfrontFunction {
+    const functionPath = join(__dirname, '/functions/redirect-apex.ts');
+    const code = generateFunctionCode('cloudfront', functionPath);
+
+    return new CloudfrontFunction(this, 'RedirectApexFunction', {
+      comment: 'Redirect apex domain to www subdomain',
+      code: FunctionCode.fromInline(code),
+      runtime: FunctionRuntime.JS_2_0,
+    });
+  }
+
+  private createDistribution(
+    bucket: Bucket,
+    redirectFunction: CloudfrontFunction,
+    certificate: Certificate,
+  ): Distribution {
     const oac = new CfnOriginAccessControl(this, 'WebsiteBucketOAC', {
       originAccessControlConfig: {
         name: 'WebsiteBucketOAC',
@@ -95,8 +117,9 @@ export class WebsiteStack extends Stack {
         origin,
         viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
         cachePolicy: CachePolicy.CACHING_OPTIMIZED,
+        functionAssociations: [{ eventType: FunctionEventType.VIEWER_REQUEST, function: redirectFunction }],
       },
-      domainNames: ['www.drieshooghe.com'],
+      domainNames: ['drieshooghe.com', 'www.drieshooghe.com'],
       certificate,
       defaultRootObject: 'index.html',
       errorResponses: [
