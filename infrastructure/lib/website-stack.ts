@@ -83,7 +83,7 @@ export class WebsiteStack extends Stack {
   }
 
   private createRedirectFunction(): CloudfrontFunction {
-    const functionPath = join(__dirname, '/functions/redirect-apex.ts');
+    const functionPath = join(__dirname, '/functions/redirect-ocoda.ts');
     const code = generateFunctionCode('cloudfront', functionPath);
 
     return new CloudfrontFunction(this, 'RedirectApexFunction', {
